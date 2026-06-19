@@ -110,3 +110,15 @@ Participants may use AI tools to:
 
 Participants must always review, verify, test, and understand any AI-generated output. No passwords, API keys, tokens, private keys, or confidential data should be placed into AI prompts.
 
+
+# Exercise 1
+
+What is the purpose of Course.java?
+= 
+
+What is the purpose of Instructor.java?
+What is the purpose of Student.java?
+What does the constructor do?
+Why are the fields marked as private?
+What does course1.assignInstructor(instructor1); mean?
+What does student1.printProfile(); do?

@@ -6,6 +6,8 @@ public class Course {
     private int durationHours;
     private String level;
     private Instructor instructor;
+    private String category;
+    private boolean active;
 
     public Course(String courseId, String title, int durationHours, String level) {
         this.courseId = courseId;
@@ -38,11 +40,29 @@ public class Course {
         this.instructor = instructor;
     }
 
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
     public void printSummary() {
         System.out.println("Course ID: " + courseId);
         System.out.println("Title: " + title);
         System.out.println("Duration: " + durationHours + " hours");
         System.out.println("Level: " + level);
+        System.out.println("Category: " + category);
+        System.out.println("Active: " + active);
 
         if (instructor == null) {
             System.out.println("Instructor: Not assigned yet");
