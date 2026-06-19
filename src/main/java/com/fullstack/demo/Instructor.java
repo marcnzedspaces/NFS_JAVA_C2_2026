@@ -1,31 +1,30 @@
 package com.fullstack.demo;
-
 public class Instructor {
-    private String instructorId;
-    private String instructorName;
-    private String expertise;
-
-    public Instructor(String instructorId, String instructorName, String expertise) {
-        this.instructorId = instructorId;
-        this.instructorName = instructorName;
-        this.expertise = expertise;
+    private String name;
+    private String email;
+    private String department;
+    
+    public Instructor(String name, String email, String department) {
+        this.name = name;
+        this.email = email;
+        this.department = department;
     }
-
-    public String getInstructorId() {
-        return instructorId;
+    
+    public String getName() {
+        return name;
     }
-
-    public String getInstructorName() {
-        return instructorName;
+    
+    public String getEmail() {
+        return email;
     }
-
-    public String getExpertise() {
-        return expertise;
+    
+    public String getDepartment() {
+        return department;
     }
-
-    public void printProfile() {
-        System.out.println("Instructor ID: " + instructorId);
-        System.out.println("Name: " + instructorName);
-        System.out.println("Expertise: " + expertise);
+    
+    public void printInstructorInfo() {
+        System.out.println("Instructor: " + name);
+        System.out.println("Email: " + email);
+        System.out.println("Department: " + department);
     }
 }
