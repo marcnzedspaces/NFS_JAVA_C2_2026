@@ -57,3 +57,10 @@ public class Course {
         System.out.println("Status: " + (active ? "Active" : "Inactive"));
     }
 }
+
+/*explanation on what changed
+
+I have added 2 new private variable: category and active,
+also updated the constructor to include these new variables, and added a print statement in the printSummary
+
+*/
