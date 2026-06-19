@@ -131,10 +131,9 @@ Why is CourseOffering more useful than using only Course when building a real we
 Submit:
 
 1. `CourseOffering.java` code.
-2. Screenshot of the program output.
-3. GitHub commit screenshot.
-4. README answer to the thinking question.
-5. Short note explaining how AI helped you, if you used AI.
+2. GitHub commit screenshot.
+3. README answer to the thinking question.
+4. Short note explaining how AI helped you, if you used AI.
 
 ## Completion Checklist
 
