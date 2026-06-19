@@ -110,3 +110,34 @@ Participants may use AI tools to:
 
 Participants must always review, verify, test, and understand any AI-generated output. No passwords, API keys, tokens, private keys, or confidential data should be placed into AI prompts.
 
+EXERCISE 1:
+What is the purpose of Course.java?
+- Create a Course object to store course related information
+
+What is the purpose of Instructor.java?
+- Create an Instructor object to store Instructor related information
+
+What is the purpose of Student.java?
+- Create a Student object to store student related information
+
+What does the constructor do?
+- To initialize object data
+
+Why are the fields marked as private?
+- to enforce encapsulation and avoid data being accessed directly within the same class
+
+What does course1.assignInstructor(instructor1); mean?
+- Means that we are assigning instructor1 as the instructor for course1
+
+What does student1.printProfile(); do?
+- print all of the student1 information
+One explanation from AI that helped you.
+
+The functionality of object as instance of class
+One part you still needed the trainer or your own reading to understand.
+- The function of making variable private
+
+
+EXERCISE 3:
+Why is CourseOffering more useful than using only Course when building a real web application?
+- The reason is because, one course would have many offering by respected lecturer, If we only use course class, then we need to make many more object for the same course, it would be redundant. There is also specific time for each offering and harder to work with only course class.

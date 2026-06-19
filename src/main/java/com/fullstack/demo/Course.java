@@ -6,12 +6,16 @@ public class Course {
     private int durationHours;
     private String level;
     private Instructor instructor;
+    private String category;
+    private boolean active;
 
-    public Course(String courseId, String title, int durationHours, String level) {
+    public Course(String courseId, String title, int durationHours, String level, String category, boolean active) {
         this.courseId = courseId;
         this.title = title;
         this.durationHours = durationHours;
         this.level = level;
+        this.category = category;
+        this.active = active;
     }
 
     public String getCourseId() {
@@ -49,5 +53,14 @@ public class Course {
         } else {
             System.out.println("Instructor: " + instructor.getInstructorName());
         }
+        System.out.println("Category: " + category);
+        System.out.println("Status: " + (active ? "Active" : "Inactive"));
     }
 }
+
+/*explanation on what changed
+
+I have added 2 new private variable: category and active,
+also updated the constructor to include these new variables, and added a print statement in the printSummary
+
+*/
