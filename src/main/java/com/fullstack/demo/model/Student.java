@@ -2,15 +2,17 @@ package com.fullstack.demo.model;
 
 public class Student {
     private String studentId;
-    private String studentName;
+    private String name;
     private String email;
 
-    public Student(String studentId, String studentName, String email) {
+    // Task 3: Constructor using setters
+    public Student(String studentId, String name, String email) {
         setStudentId(studentId);
-        setStudentName(studentName);
+        setName(name);
         setEmail(email);
     }
 
+    // Task 4 & 5: Getters and Setters with Validation
     public String getStudentId() {
         return studentId;
     }
@@ -19,12 +21,12 @@ public class Student {
         this.studentId = requireText(studentId, "Student ID");
     }
 
-    public String getStudentName() {
-        return studentName;
+    public String getName() {
+        return name;
     }
 
-    public void setStudentName(String studentName) {
-        this.studentName = requireText(studentName, "Student Name");
+    public void setName(String name) {
+        this.name = requireText(name, "Name");
     }
 
     public String getEmail() {
@@ -35,13 +37,15 @@ public class Student {
         this.email = requireText(email, "Email");
     }
 
+    // Task 6: Print method with dashed line
     public void printProfile() {
         System.out.println("Student ID: " + studentId);
-        System.out.println("Name: " + studentName);
+        System.out.println("Name: " + name);
         System.out.println("Email: " + email);
         System.out.println("----------------------------");
     }
 
+    // Task 5: Helper method for text validation
     private static String requireText(String value, String fieldName) {
         if (value == null || value.isBlank()) {
             throw new IllegalArgumentException(fieldName + " is required.");
