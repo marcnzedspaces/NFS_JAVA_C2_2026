@@ -29,7 +29,7 @@ public class Course {
     }
 
     public void setTitle(String title) {
-        this.title = requireText(title, "Title");
+        this.title = requireText(title, "Course title");
     }
 
     public int getDurationHours() {
@@ -38,7 +38,7 @@ public class Course {
 
     public void setDurationHours(int durationHours) {
         if (durationHours <= 0) {
-            throw new IllegalArgumentException("Duration hours must be more than 0.");
+            throw new IllegalArgumentException("Course duration must be greater than zero.");
         }
         this.durationHours = durationHours;
     }
@@ -48,7 +48,7 @@ public class Course {
     }
 
     public void setLevel(String level) {
-        this.level = requireText(level, "Level");
+        this.level = requireText(level, "Course level");
     }
 
     public Instructor getInstructor() {
