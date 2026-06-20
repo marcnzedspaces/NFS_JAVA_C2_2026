@@ -3,6 +3,11 @@ package com.fullstack.demo;
 import java.util.List;
 
 import com.fullstack.demo.model.Course;
+import com.fullstack.demo.exception.CourseNotFoundException;
+import com.fullstack.demo.exception.DuplicateCourseException;
+import com.fullstack.demo.exception.InvalidCourseException;
+import com.fullstack.demo.model.Course;
+import com.fullstack.demo.model.Instructor;
 import com.fullstack.demo.repository.CourseRepository;
 import com.fullstack.demo.repository.InMemoryCourseRepository;
 import com.fullstack.demo.service.CourseService;
