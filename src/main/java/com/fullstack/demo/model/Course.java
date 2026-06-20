@@ -1,4 +1,4 @@
-package com.fullstack.demo;
+package com.fullstack.demo.model;
 public class Course {
     private String courseName;
     private String courseCode;

@@ -1,4 +1,4 @@
-package com.fullstack.demo;
+package com.fullstack.demo.model;
 public class Student {
     private String name;
     private String studentID;
