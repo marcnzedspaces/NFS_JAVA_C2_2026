@@ -66,7 +66,7 @@ Course duration must be greater than zero.
 Course level is required.
 ```
 
-## Main Demo Task
+## Main Task
 
 Update `CourseServiceDemo.java`.
 
@@ -81,7 +81,7 @@ Course with duration 0
 Course with empty level
 ```
 
-## Suggested Demo Flow
+## Suggested Flow
 
 ```text
 === Valid Course Test ===
@@ -111,7 +111,4 @@ If the course is invalid, it should not be added to the repository.
 Submit:
 
 1. Updated `CourseService.java`
-2. Updated `CourseServiceDemo.java`
-3. Screenshot of valid course output
-4. Screenshot of validation error output
-5. GitHub commit link or screenshot
+2. GitHub commit link and/or screenshot
