@@ -124,7 +124,4 @@ Your search and filter methods should not crash if the input is `null`.
 Submit:
 
 1. Updated `CourseService.java`
-2. Updated `CourseServiceDemo.java`
-3. Screenshot of search output
-4. Screenshot of filter output
-5. GitHub commit link or screenshot
+2. GitHub commit link or screenshot
