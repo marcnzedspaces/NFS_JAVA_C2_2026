@@ -9,6 +9,7 @@ import com.fullstack.demo.exception.CourseNotFoundException;
 import com.fullstack.demo.exception.DuplicateCourseException;
 import com.fullstack.demo.exception.InvalidCourseException;
 import com.fullstack.demo.model.Course;
+import com.fullstack.demo.model.Instructor;
 
 public class CourseService {
 
@@ -56,6 +57,20 @@ public class CourseService {
         String searchLevel = level == null ? "" : level.toLowerCase();
         return courseRepository.findAll().stream()
                 .filter(course -> course.getLevel().toLowerCase().equals(searchLevel))
+                .collect(Collectors.toList());
+    }
+
+    public Course assignInstructor(String courseId, Instructor instructor) {
+        Course course = getCourseById(courseId);
+        course.setInstructor(instructor);
+        return courseRepository.save(course);
+    }
+
+    public List<Course> searchByInstructorName(String instructorName) {
+        String searchName = instructorName == null ? "" : instructorName.toLowerCase();
+        return courseRepository.findAll().stream()
+                .filter(course -> course.getInstructor() != null)
+                .filter(course -> course.getInstructor().getInstructorName().toLowerCase().contains(searchName))
                 .collect(Collectors.toList());
     }
 
