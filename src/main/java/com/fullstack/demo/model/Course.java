@@ -1,61 +1,67 @@
 package com.fullstack.demo.model;
+
 public class Course {
-    private String courseName;
-    private String courseCode;
+    private String courseId;
+    private String title;
+    private int durationHours;
+    private String level;
     private Instructor instructor;
-    private String category;
-    private boolean active;
-    
-    public Course(String courseName, String courseCode, String category, boolean active) {
-        this.courseName = courseName;
-        this.courseCode = courseCode;
-        this.category = category;
-        this.active = active;
-        this.instructor = null;
+
+    public Course(String courseId, String title, int durationHours, String level) {
+        this.courseId = courseId;
+        this.title = title;
+        this.durationHours = durationHours;
+        this.level = level;
+    }
+
+    public String getCourseId() {
+        return courseId;
     }
     
-    public void assignInstructor(Instructor instructor) {
-        this.instructor = instructor;
+    public String getTitle() {
+        return title;
     }
-    
-    public String getCourseName() {
-        return courseName;
+
+    public int getDurationHours() {
+        return durationHours;
     }
-    
-    public String getCourseCode() {
-        return courseCode;
+
+    public void setDurationHours(int durationHours) {
+        this.durationHours = durationHours;
     }
-    
-    public String getCategory() {
-        return category;
+
+    public String getLevel() {
+        return level;
     }
-    
-    public boolean isActive() {
-        return active;
-    }
-    
+
     public Instructor getInstructor() {
         return instructor;
     }
-    
-    public void printCourseInfo() {
-        System.out.println("Course: " + courseName + " (" + courseCode + ")");
-        if (instructor != null) {
-            System.out.println("Instructor: " + instructor.getName());
-        }
-        else {
-            System.out.println("Instructor: Not assigned");
-        }
+
+    public void setInstructor(Instructor instructor) {
+        this.instructor = instructor;
     }
-    
+    // get, set, is methods
+
+    public String getSummary() {
+        String instructorName = instructor == null ? "Not assigned yet" : instructor.getInstructorName();
+        return "Course ID: " + courseId 
+        + ", Title: " + title 
+        + ", Duration: " + durationHours 
+        + " hours, " 
+        + ", Level: " + level
+        + ", Instructor: " + instructorName;
+    }
     public void printSummary() {
-        System.out.println("Course Name: " + courseName);
-        System.out.println("Course Code: " + courseCode);
-        System.out.println("Category: " + category);
-        String status = active ? "Active" : "Inactive";
-        System.out.println("Status: " + status);
-        if (instructor != null) {
-            System.out.println("Instructor: " + instructor.getName());
+        System.out.println("Course ID: " + courseId);
+        System.out.println("Title: " + title);
+        System.out.println("Duration: " + durationHours + " hours");
+        System.out.println("Level: " + level);
+
+        if (instructor == null) {
+            System.out.println("Instructor: Not assigned yet");
+        } else {
+            System.out.println("Instructor: " + instructor.getInstructorName());
         }
     }
 }

@@ -1,4 +1,6 @@
-# Compiled class file
+# Java
+target/
+build/
 *.class
 
 # Log file
@@ -12,15 +14,44 @@
 
 # Package Files #
 *.jar
-*.war
-*.nar
-*.ear
+.java-version
+
+# IDE-specific files
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Visual Studio Code
+.vscode/
+
+# User-specific files
+# IntelliJ IDEA
+.idea/workspace.xml
+.idea/.xml
+.idea/.generated
+
+# Eclipse
+.metadata/
+.plugins/
+
+# Binary files
+*.exe
+*.dll
+*.so
+*.mp3
+*.jpg
 *.zip
-*.tar.gz
-*.rar
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-replay_pid*
+# Large files
+# !bin/
+# !tmp/
 
-.env
+# Platform-specific files
+.bat
+.sh
+.ps1
