@@ -11,48 +11,52 @@ public class CourseServiceDemo {
         CourseRepository repository = new InMemoryCourseRepository();
         CourseService service = new CourseService(repository);
 
-        // --- 1. VALID COURSE TEST ---
-        System.out.println("=== Valid Course Test ===");
+        // 1. Create Courses Setup
         try {
-            Course validCourse = new Course("C001", "Java Fundamentals", 14, "Beginner", "Programming", true);
-            service.createCourse(validCourse);
-            System.out.println("Course saved successfully.");
+            service.createCourse(new Course("C001", "Java Fundamentals", 14, "Beginner", "Programming", true));
+            service.createCourse(new Course("C002", "React Frontend Development", 21, "Intermediate", "Frontend", true));
+            service.createCourse(new Course("C003", "MongoDB Basics", 14, "Beginner", "Database", true));
+        } catch (Exception e) {
+            System.out.println("Setup Error: " + e.getMessage());
+        }
+
+        // 2. Test Update Duration
+        System.out.println("=== Update Duration ===");
+        try {
+            Course updatedCourse = service.updateDuration("C001", 20);
+            System.out.println(updatedCourse.getCourseId() + " duration updated to " + updatedCourse.getDurationHours() + " hours");
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
 
-        // --- 2. INVALID COURSE TESTS ---
-        System.out.println("\n=== Invalid Course Tests ===");
-
-        // Test A: Empty ID
+        // 3. Test Delete Course
+        System.out.println("\n=== Delete Course ===");
         try {
-            Course emptyIdCourse = new Course("", "React Basics", 20, "Beginner", "Frontend", true);
-            service.createCourse(emptyIdCourse);
-        } catch (Exception e) { 
-            System.out.println("Validation error: " + e.getMessage());
+            service.deleteCourse("C003");
+            System.out.println("C003 deleted successfully");
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
         }
 
-        // Test B: Empty Title
-        try {
-            Course emptyTitleCourse = new Course("C002", "", 15, "Intermediate", "Database", true);
-            service.createCourse(emptyTitleCourse);
-        } catch (Exception e) { 
-            System.out.println("Validation error: " + e.getMessage());
+        // 4. Print Remaining Courses
+        System.out.println("\n=== Remaining Courses ===");
+        for (Course c : service.getAllCourses()) {
+            System.out.println(c.getCourseId() + " - " + c.getTitle());
         }
 
-        // Test C: Duration 0
+        // 5. Test Find Deleted Course
+        System.out.println("\n=== Find Deleted Course ===");
         try {
-            Course zeroDurationCourse = new Course("C003", "Quick Git", 0, "Beginner", "Tools", true);
-            service.createCourse(zeroDurationCourse);
-        } catch (Exception e) { 
-            System.out.println("Validation error: " + e.getMessage());
+            service.getCourseById("C003");
+        } catch (Exception e) {
+            System.out.println("Course not found error: " + e.getMessage());
         }
-        
-        // Test D: Empty Level
+
+        // 6. Test Invalid Duration Update
+        System.out.println("\n=== Invalid Duration Test ===");
         try {
-            Course emptyLevelCourse = new Course("C004", "Spring Boot", 30, "", "Backend", true);
-            service.createCourse(emptyLevelCourse);
-        } catch (Exception e) { 
+            service.updateDuration("C002", 0);
+        } catch (Exception e) {
             System.out.println("Validation error: " + e.getMessage());
         }
     }
