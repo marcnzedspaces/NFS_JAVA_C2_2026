@@ -8,18 +8,26 @@ public class Course {
     private Instructor instructor;
 
     public Course(String courseId, String title, int durationHours, String level) {
-        this.courseId = courseId;
-        this.title = title;
-        this.durationHours = durationHours;
-        this.level = level;
+        setCourseId(courseId);
+        setTitle(title);
+        setDurationHours(durationHours);
+        setLevel(level);
     }
 
     public String getCourseId() {
         return courseId;
     }
-    
+
+    public void setCourseId(String courseId) {
+        this.courseId = requireText(courseId, "Course ID");
+    }
+
     public String getTitle() {
         return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = requireText(title, "Course Title");
     }
 
     public int getDurationHours() {
@@ -27,11 +35,18 @@ public class Course {
     }
 
     public void setDurationHours(int durationHours) {
+        if (durationHours <= 0) {
+            throw new IllegalArgumentException("Duration must be more than 0.");
+        }
         this.durationHours = durationHours;
     }
 
     public String getLevel() {
         return level;
+    }
+
+    public void setLevel(String level) {
+        this.level = requireText(level, "Course Level");
     }
 
     public Instructor getInstructor() {
@@ -63,5 +78,12 @@ public class Course {
         } else {
             System.out.println("Instructor: " + instructor.getInstructorName());
         }
+    }
+
+    private static String requireText(String value, String fieldName) {
+        if (value == null || value.isBlank()) {
+            throw new IllegalArgumentException(fieldName + " is required.");
+        }
+        return value.trim();
     }
 }
