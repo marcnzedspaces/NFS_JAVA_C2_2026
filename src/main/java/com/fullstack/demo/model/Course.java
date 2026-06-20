@@ -5,13 +5,21 @@ public class Course {
     private String title;
     private int durationHours;
     private String level;
+    
+    // Adding back the fields from Day 1 Exercise 02
+    private String category;
+    private boolean active;
+    
     private Instructor instructor;
 
-    public Course(String courseId, String title, int durationHours, String level) {
+    // Updated constructor to include all fields and use setters
+    public Course(String courseId, String title, int durationHours, String level, String category, boolean active) {
         setCourseId(courseId);
         setTitle(title);
         setDurationHours(durationHours);
         setLevel(level);
+        setCategory(category);
+        setActive(active);
     }
 
     public String getCourseId() {
@@ -49,6 +57,24 @@ public class Course {
         this.level = requireText(level, "Course Level");
     }
 
+    // New Getter and Setter for Category with validation
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = requireText(category, "Category");
+    }
+
+    // New Getter and Setter for Active status
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
     public Instructor getInstructor() {
         return instructor;
     }
@@ -56,30 +82,39 @@ public class Course {
     public void setInstructor(Instructor instructor) {
         this.instructor = instructor;
     }
-    // get, set, is methods
 
+    // Updated getSummary to include Category and Status
     public String getSummary() {
         String instructorName = instructor == null ? "Not assigned yet" : instructor.getInstructorName();
+        String statusText = active ? "Active" : "Inactive";
+        
         return "Course ID: " + courseId 
         + ", Title: " + title 
-        + ", Duration: " + durationHours 
-        + " hours, " 
+        + ", Duration: " + durationHours + " hours" 
         + ", Level: " + level
+        + ", Category: " + category
+        + ", Status: " + statusText
         + ", Instructor: " + instructorName;
     }
+
+    // Updated printSummary to include Category and Status, plus the dashed line for formatting
     public void printSummary() {
         System.out.println("Course ID: " + courseId);
         System.out.println("Title: " + title);
         System.out.println("Duration: " + durationHours + " hours");
         System.out.println("Level: " + level);
+        System.out.println("Category: " + category);
+        System.out.println("Status: " + (active ? "Active" : "Inactive"));
 
         if (instructor == null) {
             System.out.println("Instructor: Not assigned yet");
         } else {
             System.out.println("Instructor: " + instructor.getInstructorName());
         }
+        System.out.println("----------------------------");
     }
 
+    // Helper method for text validation
     private static String requireText(String value, String fieldName) {
         if (value == null || value.isBlank()) {
             throw new IllegalArgumentException(fieldName + " is required.");
