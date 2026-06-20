@@ -48,4 +48,11 @@ public class Instructor {
         }
         return value.trim();
     }
+
+    private static String requireText(String value, String fieldName) {
+        if (value == null || value.isBlank()) {
+            throw new IllegalArgumentException(fieldName + " is required.");
+        }
+        return value.trim();
+    }
 }
