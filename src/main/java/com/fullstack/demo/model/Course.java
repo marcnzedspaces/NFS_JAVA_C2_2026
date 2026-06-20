@@ -6,20 +6,30 @@ public class Course {
     private int durationHours;
     private String level;
     private Instructor instructor;
+    private boolean active;
 
     public Course(String courseId, String title, int durationHours, String level) {
-        this.courseId = courseId;
-        this.title = title;
-        this.durationHours = durationHours;
-        this.level = level;
+        setCourseId(courseId);
+        setTitle(title);
+        setDurationHours(durationHours);
+        setLevel(level);
+        this.active = true;
     }
 
     public String getCourseId() {
         return courseId;
     }
-    
+
+    public void setCourseId(String courseId) {
+        this.courseId = requireText(courseId, "Course ID");
+    }
+
     public String getTitle() {
         return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = requireText(title, "Title");
     }
 
     public int getDurationHours() {
@@ -27,11 +37,18 @@ public class Course {
     }
 
     public void setDurationHours(int durationHours) {
+        if (durationHours <= 0) {
+            throw new IllegalArgumentException("Duration hours must be more than 0.");
+        }
         this.durationHours = durationHours;
     }
 
     public String getLevel() {
         return level;
+    }
+
+    public void setLevel(String level) {
+        this.level = requireText(level, "Level");
     }
 
     public Instructor getInstructor() {
@@ -41,27 +58,34 @@ public class Course {
     public void setInstructor(Instructor instructor) {
         this.instructor = instructor;
     }
-    // get, set, is methods
 
-    public String getSummary() {
-        String instructorName = instructor == null ? "Not assigned yet" : instructor.getInstructorName();
-        return "Course ID: " + courseId 
-        + ", Title: " + title 
-        + ", Duration: " + durationHours 
-        + " hours, " 
-        + ", Level: " + level
-        + ", Instructor: " + instructorName;
+    public boolean isActive() {
+        return active;
     }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
     public void printSummary() {
         System.out.println("Course ID: " + courseId);
         System.out.println("Title: " + title);
         System.out.println("Duration: " + durationHours + " hours");
         System.out.println("Level: " + level);
+        System.out.println("Status: " + (active ? "Active" : "Inactive"));
 
         if (instructor == null) {
             System.out.println("Instructor: Not assigned yet");
         } else {
             System.out.println("Instructor: " + instructor.getInstructorName());
         }
+        System.out.println("----------------------------");
+    }
+
+    private static String requireText(String value, String fieldName) {
+        if (value == null || value.isBlank()) {
+            throw new IllegalArgumentException(fieldName + " is required.");
+        }
+        return value.trim();
     }
 }
