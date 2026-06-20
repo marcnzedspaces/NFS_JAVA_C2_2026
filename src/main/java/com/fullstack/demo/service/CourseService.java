@@ -2,6 +2,7 @@ package com.fullstack.demo.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import com.fullstack.demo.repository.CourseRepository;
 import com.fullstack.demo.exception.CourseNotFoundException;
@@ -42,6 +43,20 @@ public class CourseService {
 
     public List<Course> getAllCourses() {
         return courseRepository.findAll();
+    }
+
+    public List<Course> searchByTitle(String keyword) {
+        String searchKeyword = keyword == null ? "" : keyword.toLowerCase();
+        return courseRepository.findAll().stream()
+                .filter(course -> course.getTitle().toLowerCase().contains(searchKeyword))
+                .collect(Collectors.toList());
+    }
+
+    public List<Course> filterByLevel(String level) {
+        String searchLevel = level == null ? "" : level.toLowerCase();
+        return courseRepository.findAll().stream()
+                .filter(course -> course.getLevel().toLowerCase().equals(searchLevel))
+                .collect(Collectors.toList());
     }
 
     private void validateCourse(Course course) {
