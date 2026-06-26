@@ -47,7 +47,7 @@ import com.fullstack.demo.model.Instructor;
 Create two instructors:
 
 ```text
-I001 - Aina Rahman - Java and Spring Boot
+I001 - Mike Rahman - Java and Spring Boot
 I002 - Marcus Lee - React and Frontend Development
 ```
 
@@ -71,7 +71,7 @@ course.setInstructor(instructor);
 Assign:
 
 ```text
-Aina Rahman -> Java Fundamentals
+Mike Rahman -> Java Fundamentals
 Marcus Lee -> React Frontend Development
 ```
 
