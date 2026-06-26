@@ -11,8 +11,9 @@ import com.fullstack.demo.exception.InvalidCourseException;
 import com.fullstack.demo.model.Course;
 import com.fullstack.demo.model.Instructor;
 
-public class CourseService {
+import java.util.List;
 
+public class CourseService {
     private final CourseRepository courseRepository;
 
     public CourseService(CourseRepository courseRepository) {
@@ -21,26 +22,26 @@ public class CourseService {
 
     public Course createCourse(Course course) {
         validateCourse(course);
+
         if (courseRepository.existsById(course.getCourseId())) {
             throw new DuplicateCourseException(course.getCourseId());
         }
-        return courseRepository.save(course);
 
+        return courseRepository.save(course);
     }
 
     public Course getCourseById(String courseId) {
+        // public Course getCourseById(String courseId) {
+        //     Optional<Course> optionalCourse = courseRepository.findById(courseId);
+        //     if (optionalCourse.isPresent()) {
+        //         return optionalCourse.get();
+        //     } else {
+        //         throw new CourseNotFoundException(courseId);
+        //     }
+        // }
         return courseRepository.findById(courseId)
                 .orElseThrow(() -> new CourseNotFoundException(courseId));
     }
-    // public Course getCourseById(String courseId) {
-    //     Optional<Course> optionalCourse = courseRepository.findById(courseId);
-    //     if (optionalCourse.isPresent()) {
-    //         return optionalCourse.get();
-    //     } else {
-    //         throw new CourseNotFoundException(courseId);
-    //     }
-    // }
-    
 
     public List<Course> getAllCourses() {
         return courseRepository.findAll();
@@ -111,5 +112,8 @@ public class CourseService {
     private boolean isBlank(String value) {
         return value == null || value.isBlank();
     }
-}
 
+    private boolean isBlank(String value) {
+        return value == null || value.trim().isEmpty();
+    }
+}
