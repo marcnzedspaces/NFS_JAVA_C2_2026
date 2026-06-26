@@ -39,7 +39,7 @@ You will create a new demo class and write code that:
 Create this file:
 
 ```text
-src/main/java/com/fullstack/demo/Day3_Assignment01_CodeFlowPractice.java
+src/main/java/com/fullstack/demo/CodeFlowPractice.java
 ```
 
 Use this package at the top:
