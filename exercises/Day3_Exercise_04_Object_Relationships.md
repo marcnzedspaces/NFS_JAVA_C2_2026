@@ -31,7 +31,7 @@ You will create a demo class that creates instructors, courses, and course offer
 Create:
 
 ```text
-src/main/java/com/fullstack/demo/Day3_Assignment04_ObjectRelationshipPractice.java
+src/main/java/com/fullstack/demo/ObjectRelationshipPractice.java
 ```
 
 ## Imports you will need
@@ -86,7 +86,7 @@ Example values:
 ```text
 OFF001 - Java Fundamentals June Intake
 Course: Java Fundamentals
-Instructor: Aina Rahman
+Instructor: Mike Rahman
 Start Date: 2026-06-29
 End Date: 2026-06-30
 Capacity: 25
@@ -127,7 +127,7 @@ Your output should show:
 
 ```text
 === Courses ===
-Java Fundamentals with Aina Rahman
+Java Fundamentals with Mike Rahman
 React Frontend Development with Marcus Lee
 
 === Course Offerings ===
