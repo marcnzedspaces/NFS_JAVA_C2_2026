@@ -27,7 +27,7 @@ StudentRepository
 InMemoryStudentRepository
 StudentService
 StudentNotFoundException
-Day3_Assignment06_StudentServicePractice
+StudentServicePractice
 ```
 
 ## Existing file you will use
