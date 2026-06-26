@@ -1,4 +1,4 @@
-package com.fullstack.demo;
+package com.fullstack.demo.day3democode;
 
 import com.fullstack.demo.exception.CourseNotFoundException;
 import com.fullstack.demo.model.Course;
