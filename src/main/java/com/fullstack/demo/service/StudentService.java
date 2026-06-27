@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.fullstack.demo.exception.DuplicateStudentException;
+import com.fullstack.demo.exception.InvalidStudentException;
 import com.fullstack.demo.exception.StudentNotFoundException;
 import com.fullstack.demo.model.Student;
 import com.fullstack.demo.repository.StudentRepository;
@@ -16,12 +17,12 @@ public class StudentService {
     }
 
     public Student registerStudent(Student student) {
-        if (student == null) {
-            throw new IllegalArgumentException("Student cannot be null.");
-        }
+        validateStudent(student);
+
         if (studentRepository.existsById(student.getStudentId())) {
             throw new DuplicateStudentException(student.getStudentId());
         }
+
         return studentRepository.save(student);
     }
 
@@ -35,7 +36,7 @@ public class StudentService {
     }
 
     public List<Student> searchByNameUsingLoop(String keyword) {
-        String safeKeyword = keyword == null ? "" : keyword.toLowerCase();
+        String safeKeyword = keyword == null ? "" : keyword.trim().toLowerCase();
         List<Student> results = new ArrayList<>();
 
         for (Student student : studentRepository.findAll()) {
@@ -47,9 +48,31 @@ public class StudentService {
     }
 
     public List<Student> searchByNameUsingStream(String keyword) {
-        String safeKeyword = keyword == null ? "" : keyword.toLowerCase();
+        String safeKeyword = keyword == null ? "" : keyword.trim().toLowerCase();
         return studentRepository.findAll().stream()
                 .filter(student -> student.getName().toLowerCase().contains(safeKeyword))
                 .toList();
+    }
+
+    private void validateStudent(Student student) {
+        if (student == null) {
+            throw new InvalidStudentException("Student cannot be null.");
+        }
+        if (isBlank(student.getStudentId())) {
+            throw new InvalidStudentException("Student ID is required.");
+        }
+        if (isBlank(student.getName())) {
+            throw new InvalidStudentException("Student name is required.");
+        }
+        if (isBlank(student.getEmail())) {
+            throw new InvalidStudentException("Student email is required.");
+        }
+        if (!student.getEmail().contains("@")) {
+            throw new InvalidStudentException("Student email must contain @.");
+        }
+    }
+
+    private boolean isBlank(String value) {
+        return value == null || value.trim().isEmpty();
     }
 }

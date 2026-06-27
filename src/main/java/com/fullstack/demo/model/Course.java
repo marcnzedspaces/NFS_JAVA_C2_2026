@@ -67,6 +67,15 @@ public class Course {
         this.active = active;
     }
 
+    public String getSummary() {
+        String instructorName = instructor == null ? "Not assigned yet" : instructor.getInstructorName();
+        return "Course ID: " + courseId
+                + ", Title: " + title
+                + ", Duration: " + durationHours + " hours"
+                + ", Level: " + level
+                + ", Instructor: " + instructorName;
+    }
+
     public void printSummary() {
         System.out.println("Course ID: " + courseId);
         System.out.println("Title: " + title);
